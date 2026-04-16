@@ -1,0 +1,4 @@
+Level,1
+Character,-1.0181462,-7.374667,2,2,false
+Coin,-10.0,-10.0
+PortalSpawned,false
