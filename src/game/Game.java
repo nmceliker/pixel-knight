@@ -279,15 +279,6 @@ public class Game {
             boss.setPosition(new Vec2(12, -9));
             boss.setDropsCoins(true);
             boss.setDropsLoot(true);
-            Coin coin1 = new Coin(world);
-            coin1.setPosition(new Vec2(-8, 3));
-            Coin coin2 = new Coin(world);
-            coin2.setPosition(new Vec2(8, 5));
-            Coin coin3 = new Coin(world);
-            coin3.setPosition(new Vec2(0, -1));
-            coin1.getSensor().addSensorListener(new CoinListener(coin1, this));
-            coin2.getSensor().addSensorListener(new CoinListener(coin2, this));
-            coin3.getSensor().addSensorListener(new CoinListener(coin3, this));
             mask = new HealthMask(world, 3f, 2f);
             mask.setPosition(new Vec2(0, 5));
             world.start();
@@ -594,11 +585,14 @@ public class Game {
 
     public void loadNextLevel() {
         if (currentLevel == 1) {
-            // Transition from level 1 to level 2
             startLevel(2);
         } else if (currentLevel == 2) {
-            // Transition from level 2 to level 3
             startLevel(3);
+        } else if (currentLevel == 3) {
+            menu.showVictoryMenu(
+                    () ->         showMainMenu(),
+                    () -> System.exit(0)
+            );
+            }
         }
     }
-}
