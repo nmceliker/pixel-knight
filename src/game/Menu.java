@@ -272,7 +272,7 @@ public class Menu {
 
         JPanel victoryMenuPanel = new JPanel();
         victoryMenuPanel.setLayout(new BoxLayout(victoryMenuPanel, BoxLayout.Y_AXIS));
-        victoryMenuPanel.setBackground(new Color(30, 144, 255)); // A nice victory blue background! (Or change to Color.BLACK)
+        victoryMenuPanel.setBackground(new Color(30, 144, 255));
 
         JLabel title = new JLabel("<html><center>WAHOO!!<br>YOU FINISHED THE GAME!!</center></html>");
         title.setFont(new Font("Serif", Font.BOLD, 40));
