@@ -267,6 +267,42 @@ public class Menu {
         }
     }
 
+    public void showVictoryMenu(Runnable onMainMenu, Runnable onQuit) {
+        mainGameWindow.getContentPane().removeAll();
+
+        JPanel victoryMenuPanel = new JPanel();
+        victoryMenuPanel.setLayout(new BoxLayout(victoryMenuPanel, BoxLayout.Y_AXIS));
+        victoryMenuPanel.setBackground(new Color(30, 144, 255)); // A nice victory blue background! (Or change to Color.BLACK)
+
+        JLabel title = new JLabel("<html><center>WAHOO!!<br>YOU FINISHED THE GAME!!</center></html>");
+        title.setFont(new Font("Serif", Font.BOLD, 40));
+        title.setForeground(Color.WHITE);
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JButton menuBtn = new JButton("Back to Main Menu");
+        menuBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        menuBtn.addActionListener(e -> {
+            if (onMainMenu != null) onMainMenu.run();
+        });
+
+        JButton quitBtn = new JButton("Quit");
+        quitBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        quitBtn.addActionListener(e -> {
+            if (onQuit != null) onQuit.run();
+        });
+
+        victoryMenuPanel.add(Box.createVerticalStrut(100));
+        victoryMenuPanel.add(title);
+        victoryMenuPanel.add(Box.createVerticalStrut(50));
+        victoryMenuPanel.add(menuBtn);
+        victoryMenuPanel.add(Box.createVerticalStrut(20));
+        victoryMenuPanel.add(quitBtn);
+
+        mainGameWindow.add(victoryMenuPanel);
+        mainGameWindow.revalidate();
+        mainGameWindow.repaint();
+    }
+
     public SoundFX getDamageSound() { return damageSound; }
     public SoundFX getDeathSound() { return deathSound; }
     public SoundFX getSlashSound() { return slashSound; }
